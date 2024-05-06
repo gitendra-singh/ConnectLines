@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "994296164774",
+    "project_id": "connectlines360",
+    "storage_bucket": "connectlines360.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994296164774:android:cc73319be01702d2039f67",
+        "android_client_info": {
+          "package_name": "com.example.connectlines"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": " // Firebase  "
+
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
