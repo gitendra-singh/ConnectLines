@@ -65,7 +65,7 @@ class UserViewModel: ViewModel() {
     private val firestoreDb = Firebase.firestore
     fun followUsers(userId: String, currentUserId: String){
 
-        val ref = firestoreDb.collection("following").document(userId)
+        val ref = firestoreDb.collection("following").document(currentUserId)
         val followerRef = firestoreDb.collection("followers").document(userId)
 
         ref.update("followingIds", FieldValue.arrayUnion(userId))

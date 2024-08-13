@@ -6,14 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.connectlines.item_view.LineItem
-import com.example.connectlines.utils.SharedPref
 import com.example.connectlines.viewModel.HomeViewModel
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun Home(navHostController: NavHostController) {
@@ -29,10 +26,4 @@ fun Home(navHostController: NavHostController) {
         }
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ShowHome(){
-//    Home()
 }

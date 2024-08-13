@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -26,6 +27,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.example.connectlines.item_view.LineItem
+import com.example.connectlines.model.LineModel
+import com.example.connectlines.model.UserModel
 import com.example.connectlines.navigation.Routes
 import com.example.connectlines.utils.SharedPref
 import com.example.connectlines.viewModel.AuthViewModel
@@ -142,24 +145,43 @@ fun OtherUsers(navHostController: NavHostController, uid : String){
                     start.linkTo(parent.start)
                 }) {
 
-                    Text(text = if (followerList != null && followingList!!.isNotEmpty() && followerList!!.contains(currentUserId)
-                        ) "Following"
-                    else "Follow"
+                    Text(
+                        text = when {
+                            followerList == null || !followerList!!.contains(currentUserId) -> "Follow"
+                            followerList!!.contains(currentUserId) -> "Following"
+                            else -> "Follow"
+                        }
                     )
+
                 }
 
             }
 
         }
-//        if (lines != null && users != null) {
-//            items(lines ?: emptyList()) { pairs ->
-//                LineItem(
-//                    line = pairs,
-//                    users = users!!,
-//                    navHostController = navHostController,
-//                    userId = SharedPref.getUserName(context)
-//                )
-//            }
-//        }
+                if (lines != null && users != null) {
+            items(lines ?: emptyList()) { pairs ->
+                SharedPref.getUserName(context)?.let {
+                    LineItem(
+                        line = pairs,
+                        users = users!!,
+                        navHostController = navHostController,
+                        userId = it
+                    )
+                }
+            }
+        }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ShowLineItem(){
+    val mockLine = LineModel(line = "Example text", image = "")
+    val mockUser = UserModel(name = "John Doe", imageUrl = "")
+    LineItem(
+        line = mockLine,
+        users = mockUser,
+        navHostController = NavHostController(LocalContext.current),
+        userId = "user123"
+    )
 }
