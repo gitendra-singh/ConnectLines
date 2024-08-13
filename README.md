@@ -15,3 +15,6 @@ Firebase Firestore
 Storage  
 RealTime Database  
 Coil (for image loading)
+
+##Architecture
+Model-View-ViewModel
