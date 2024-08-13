@@ -16,5 +16,5 @@ Storage
 RealTime Database  
 Coil (for image loading)
 
-##Architecture
+## Architecture  
 Model-View-ViewModel
